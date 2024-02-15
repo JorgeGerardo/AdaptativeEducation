@@ -1,0 +1,25 @@
+<app-user-navbar></app-user-navbar>
+
+<div class="flex flex-col justify-start items-center h-5/6">
+  <h1 class="title">
+      <span style="color: #007BFF">¡</span>
+      <span style="color: #0D6EFD">B</span>
+      <span style="color: #1380FB">i</span>
+      <span style="color: #1992FA">e</span>
+      <span style="color: #1FABF9">n</span>
+      <span style="color: #23C2F8">v</span>
+      <span style="color: #28AEE8">e</span>
+      <span style="color: #2E9CDA">n</span>
+      <span style="color: #347FCA">i</span>
+      <span style="color: #3A68BA">d</span>
+      <span style="color: #4051AA">o</span>
+      <span style="color: #46499B">!</span>
+  </h1>
+  <img class="bg-img" src="/assets/img/math.svg" alt="img">
+
+  <a *ngIf="!isUserLogged; else isLogged" class="btn-login" routerLink="/login">Iniciar sesión</a>
+
+  <ng-template #isLogged>
+    <a class="btn-start" routerLink="/exam">Iniciar prueba</a>
+  </ng-template>
+</div>

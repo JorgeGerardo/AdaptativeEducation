@@ -1,0 +1,45 @@
+<nav
+  class="bg-gray-900 sticky w-full z-20 top-0 start-0 border-b border-gray-600 h-10vh"
+>
+  <div
+    class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4"
+  >
+    <!-- Logo -->
+    <a class="flex items-center space-x-3">
+      <img
+        src="/assets/img/LogoITSG/ITSG_LOGO_OFFICIAL_25_25_50.png"
+        id="logo"
+        class="h-8"
+        alt="Flowbite Logo"
+      />
+    </a>
+
+    <!-- btn sesion -->
+    <div class="flex order-2 space-x-3">
+      <button
+        *ngIf="!isLogged; else closeSesion"
+        type="button"
+        class="login"
+        (click)="login()"
+      >
+        Iniciar sesion
+      </button>
+      <ng-template #closeSesion>
+        <button *ngIf="isLogged" type="button" class="close-sesion" (click)="singOut()">
+          Cerrar sesión
+        </button>
+      </ng-template>
+    </div>
+
+    <!-- Links -->
+    <div class="items-center justify-between flex">
+      <ul>
+        <li *ngFor="let link of navLinks">
+          <a routerLinkActive="aLinkActive" [routerLink]="link.route">{{
+            link.name
+          }}</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>

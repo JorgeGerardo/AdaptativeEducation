@@ -1,0 +1,24 @@
+body {
+  height: 89.5vh;
+}
+
+/* .cdk-header-row {
+  @apply sticky top-0 z-10;
+  @apply text-xl text-left text-gray-400 h-full w-2/3 bg-primary-blue rounded-lg;
+} */
+
+.header-row{
+   @apply sticky top-0 z-10 text-xs uppercase bg-gray-700 text-gray-400 rounded-t-lg;
+}
+
+.table-data-row {
+  @apply p-3 align-text-top text-center;
+}
+
+.anchor-actions{
+  @apply underline hover:text-blue-300 hover:cursor-pointer font-bold;
+}
+
+/*.table-row {
+    @apply text-xs uppercase bg-gray-700 text-gray-400 sticky rounded-t-lg;
+} */

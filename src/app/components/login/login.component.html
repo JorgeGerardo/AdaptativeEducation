@@ -1,0 +1,32 @@
+<app-user-navbar></app-user-navbar>
+<section class=" h-5/6">
+    <div class="flex flex-col items-center justify-start px-6 mx-auto py-0">
+        <a class="flex items-center mb-6 text-2xl font-semibold text-white">
+            <img class="w-24 mr-2 " src="/assets/img/LogoITSG/LogoToros.png" alt="ITSG">
+        </a>
+        <div class="w-full bg-gray-800 rounded-lg shadow max-w-md border border-gray-700">
+            <div class="p-6 space-y-4 md:space-y-6 sm:p-8">
+                <h1 class="text-xl font-bold leading-tight tracking-tight text-white md:text-2xl">
+                    Inicia sesión con tu cuenta
+                </h1>
+                <form [formGroup]="form" class="space-y-4 md:space-y-6">
+                    <div>
+                        <label for="email" class="block mb-2 text-sm font-medium text-white">Correo eléctornico</label>
+                        <input [class.invalid]="emailInvalid" formControlName="email" type="email" class="input-login" placeholder="Nombre@Institución.com">
+                    </div>
+                    <div>
+                        <label  for="password" class="block mb-2 text-sm font-medium text-white">Contraseña</label>
+                        <input [class.invalid]="passwordInvalid" formControlName="password" type="password" placeholder="Ingrese su contraseña" class="input-login">
+                    </div>
+                    <div class="flex items-start">
+                        <a routerLink="." class="forget">¿Olvidaste tu contraseña?</a>
+                    </div>
+                    <button (click)="trySingIn()" [disabled]="isFormInvalid" [class.desactivate]="isFormInvalid" type="submit" class="btn-login">Iniciar sesión</button>
+                    <p class="text-sm font-light text-gray-400">
+                        ¿No tienes una cuenta? <a routerLink="." class="create-account">¡Crea una!</a>
+                    </p>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>

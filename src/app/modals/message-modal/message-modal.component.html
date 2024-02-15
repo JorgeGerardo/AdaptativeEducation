@@ -1,0 +1,35 @@
+<body [ngSwitch]="type" class="bg-primary-blue rounded-lg p-2">
+
+    <div  class="flex flex-col h-full flex-grow justify-between">
+        <div class="flex flex-row justify-end">
+            <button type="button" (click)="closeMe()" class="btn-cancel">Cerrar</button>
+        </div>
+    
+        <div class="m-4 rounded-lg ">
+            <p class="text-2xl text-white text-center">{{message}}</p>
+        </div>
+    
+        <div class="p-4" *ngSwitchCase="'Acept'">
+            <div class="flex flex-row justify-end space-x-6">
+                <button (click)="acept()" class="btn-acept">Ok</button>
+                <button (click)="cancel()" class="btn-cancel">Not Ok</button>
+            </div>
+        </div>
+
+        <div class="p-4" *ngSwitchCase="'Confirm'">
+            <div class="flex flex-row justify-end space-x-6">
+                <button (click)="acept()" class="btn-acept">Ok</button>
+            </div>
+        </div>
+
+        <div class="p-4" *ngSwitchCase="'Error'">
+            <div class="flex flex-row justify-end space-x-6">
+                <button (click)="goHome()" class="btn-cancel">Salir</button>
+            </div>
+        </div>
+
+
+
+    </div>
+
+</body>

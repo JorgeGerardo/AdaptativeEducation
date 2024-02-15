@@ -1,0 +1,47 @@
+<!-- <button type="button" (click)="test()">Test</button> -->
+<body class="flex flex-col h-screen w-screen justify-between items-center">
+    <header class="text-white w-full mt-12 flex flex-row justify-center">
+
+        <div class="bg-gray-800 p-4 rounded-lg w-4/5">
+            <form [ngSwitch]="cursor.type">
+                <h1 class="text-3xl mb-4vh text-justify">{{cursor.currentQuestionNumber}}.- {{abstractQuestion?.questionInstruction}}</h1>
+
+                <section *ngSwitchCase="'multiple'">
+                    <div *ngFor="let answer of currentMultipleQuestion.posibleAnwers; index as i" class="flex items-center mb-4">
+                        <input [id]="answer" (change)="optionSelected = answer" type="radio" ngModel [value]="answer" name="answer" class="hidden">
+                        <label [ngClass]="{'active': optionSelected == answer, 'option': optionSelected !== answer}" [for]="answer">
+                            <strong>{{getInciso(i)}}.-</strong> {{answer}}
+                        </label>
+                    </div>        
+                </section>
+
+                <div *ngSwitchCase="'image'">
+                    <div class="flex flex-col items-center" *ngFor="let imageUrl of currentImageQuestion?.images; let i = index">
+                        <label [for]="imageUrl" class="block w-11/12 mx-auto">
+                            <input (change)="optionSelected = imageUrl" type="radio" name="imageAnswer" [id]="imageUrl" class="hidden">
+                            <img [class.active]="optionSelected=== imageUrl" [src]="imageUrl" class="mb-2 rounded-lg w-full cursor-pointer" (error)="showReloadButton[i] = true">
+                            <button *ngIf="showReloadButton[i]" (click)="reloadImage(imageUrl, i)">Recargar imagen</button> <br>
+                            <a class="error-load" [href]="imageUrl" target="_blank" *ngIf="showReloadButton[i]" >Ver imagen</a>
+                        </label>
+                    </div>
+                </div>
+
+                <div *ngSwitchDefault>
+                    <div class="p-4 text-3xl">Cargando...</div>
+                </div>
+                
+
+            </form>
+        </div>
+    </header>
+
+    <section class="text-white mb-24 w-full">
+        <div class="flex flex-row-reverse mr-10">
+            <button #nextQuestionBtn  type="button" 
+             [disabled]="optionSelected=== ''" 
+            [ngClass]="{'btn-desativate': optionSelected=== '','nextQueston-button ml-2  ': optionSelected!== '' } ">Siguiente</button>
+
+            <!-- <button type="button" (click)="test()">Test</button> -->
+        </div>
+    </section>
+</body>

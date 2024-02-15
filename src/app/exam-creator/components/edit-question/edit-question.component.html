@@ -1,0 +1,110 @@
+<div class="mt-10 h-4/5 w-11/12 mx-auto p-4">
+    <form
+      [formGroup]="questionForm"
+      class="flex flex-row w-full h-full justify-center"
+    >
+      <!-- part1 -->
+      <div class="w-5/12 bg-gray-600 flex flex-col space-y-4 space-x-4 justify-start rounded-lg mr-1">
+  
+        <h1 class="mx-4 mt-4 text-white">Asignatura:</h1>
+        <select formControlName="asignature" class="bg-gray-700" [class.invalid]="isFieldInvalid(QuestionFields.asignature)">
+          <option *ngFor="let asignature of asignatures" [value]="asignature.name">
+            {{ asignature.name }}
+          </option>
+        </select>
+       
+        <input
+        [class.invalid]="isFieldInvalid(QuestionFields.questionInstruction)"
+          formControlName="questionInstruction"
+          class="entry"
+          type="text"
+          placeholder="Ingrese la pregunta/instrucción"
+        />
+        <h6>Dificultad:</h6>
+        <div class="flex flex-row justify-evenly">
+          <div>
+            <label>Columna:</label>
+          <input [class.invalid]="isFieldInvalid(QuestionFields.difficultLevelColumn)" type="number" formControlName="difficultLevelColumn" placeholder="Columna" />
+  
+          </div>
+          <div>
+            <label>Fila:</label>
+          <input [class.invalid]="isFieldInvalid(QuestionFields.difficultLevelRow)" type="number" formControlName="difficultLevelRow" placeholder="Fila" />
+          </div>
+        </div>
+  
+  
+  
+        <h6 class="text-white">Respuesta correcta:</h6>
+        <div class="flex justify-evenly mt-4 items bg-gray-200 mx-auto py-4 rounded-lg">
+          <div>
+            <input #A formControlName="correctAnswer" value="A" class="hidden" id="optionA" type="radio" name="correctAnswer"/>
+            <label for="optionA" [ngClass]="A.checked? 'correct-answer' : 'answer'">A</label>
+          </div>
+          <div>
+            <input #B formControlName="correctAnswer" value="B" class="hidden" id="optionB" type="radio" name="correctAnswer"/>
+            <label for="optionB" [ngClass]="B.checked? 'correct-answer' : 'answer'">B</label>
+          </div>
+          <div>
+            <input #C formControlName="correctAnswer" value="C" class="hidden" id="optionC" type="radio" name="correctAnswer"/>
+            <label for="optionC" [ngClass]="C.checked? 'correct-answer' : 'answer'">C</label>
+          </div>
+        </div>
+      </div>
+  
+      <!-- part2 -->
+      <div class="w-5/12 bg-gray-600 flex flex-col space-y-4 rounded-lg p-1">
+        <h6>Tipo de pregunta</h6>
+        <div class="flex justify-evenly">
+          <div>
+            <label>Multiple</label>
+            <input  formControlName="type" type="radio" name="type" value="multiple" checked/>
+          </div>
+          <div>
+            <label>Imagen</label>
+            <input formControlName="type" type="radio" name="type" value="image" />
+          </div>
+        </div>
+  
+        <section
+          class="flex flex-col w-full "
+          *ngIf="isMultipleQuestion; else multiple"
+          formGroupName="posibleAnswers"
+        >
+          <label class="mx-4">Respuesta 1</label>
+          <input type="text" [class.invalid]="isFormGroupFieldInvalid(QuestionFields.posibleAnswers, QuestionFields.answerA)" formControlName="answerA" placeholder="Respuesta 1" class="mb-4"/>
+          <label class="mx-4">Respuesta 2</label>
+          <input type="text" [class.invalid]="isFormGroupFieldInvalid(QuestionFields.posibleAnswers, QuestionFields.answerA)" formControlName="answerB" placeholder="Respuesta 2" class="mb-4" />
+          <label class="mx-4">Respuesta 3</label>
+          <input type="text" [class.invalid]="isFormGroupFieldInvalid(QuestionFields.posibleAnswers, QuestionFields.answerA)" formControlName="answerC" placeholder="Respuesta 3" />
+        </section>
+  
+        <ng-template #multiple >
+  
+          <div formGroupName="images">
+            <div class="flex flex-col" >
+              <label class="mx-4">Imagen 1</label>
+              <input [class.invalid]="isFormGroupFieldInvalid('images','imageA')" formControlName="imageA" type="text" placeholder="Url de la imagen" />
+            </div>
+            <div class="flex flex-col">
+              <label class="mx-4">Imagen 2</label>
+              <input [class.invalid]="isFormGroupFieldInvalid('images','imageB')" formControlName="imageB" type="text" placeholder="Url de la imagen"/>
+            </div>
+            <div class="flex flex-col">
+              <label class="mx-4">Imagen 3</label>
+              <input [class.invalid]="isFormGroupFieldInvalid('images','imageC')" formControlName="imageC" type="text" placeholder="Url de la imagen"/>
+            </div>
+    
+          </div>
+        
+        </ng-template>
+        
+        <p *ngIf="answerRepited" class="ml-2 text-lg text-red-500">No se permite repetir respuetas.</p>
+
+        
+        <button #btnUpdate [class.invalid-add]="!formValid" [disabled]="!formValid" class="space-x-4">Actualizar</button>
+        <!-- <button class="space-x-4" (click)="clean()">Limpiar formulario</button> -->
+        <button class="space-x-4" (click)="test()">Test</button>
+      </div>
+    </form>
+  </div>

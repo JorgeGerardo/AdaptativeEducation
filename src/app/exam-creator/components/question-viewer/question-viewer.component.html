@@ -1,0 +1,53 @@
+<body class="bg-gray-600 w-full flex flex-col items-center" *ngIf="question">
+    <section class="sections flex flex-col" *ngIf="question.type === 'image'; else multipleQuestion">
+        <h1 class="underline text-3xl font-semibold">Información de la pregunta</h1>
+        <h2>Pregunta/Instrucción:</h2>
+        <p class="ml-2vh">{{imageQuestion?.questionInstruction}}</p>
+        <hr class="border-black">
+
+        <h2 class="mt-2vh">Respuestas:</h2>
+        <div class="space-y-4vh" *ngFor="let image of imageQuestion?.images">
+            <img [src]="image" alt="Error en cargar la imagen" class="mb-1vh"
+                [class.correct-image]="image === imageQuestion?.correctAnswer"
+                [class.incorrect-image]="image !== imageQuestion?.correctAnswer"
+            >
+        </div>
+    </section>
+
+    <ng-template #multipleQuestion>
+        <section class="sections flex flex-col"> 
+            <h1 class="underline text-3xl font-semibold">Información de la pregunta</h1>
+            <h2>Pregunta/Instrucción:</h2>
+            <p class="ml-2vh">{{multiQuestion?.questionInstruction}}</p>
+            <hr class="border-black">
+    
+            <h2 class="mt-2vh">Respuestas:</h2>
+            <div *ngFor="let p of multiQuestion?.posibleAnwers; index as i">
+                <p class="mb-1vh ml-2vh">{{i+1}}.-{{p}}</p>
+            </div>
+            Respuesta correcta:
+            <p class="ml-2vh">{{multiQuestion?.correctAnswer}}</p>
+    
+        </section>    
+    </ng-template>
+
+
+
+    <!-- Question Metadata  -->
+    <section class="space-y-4 mb-8 bg-gray-100 p-4 rounded-lg shadow-lg">
+        <h1 class="text-4xl font-bold text-center text-blue-800">Datos sobre la pregunta:</h1>
+        <hr class="border-black">
+        <div class="grid grid-cols-2 gap-4">
+            <h2 class="metadata-h2">Asignatura:</h2>
+            <p class="metadata-p">{{question.asignature}}</p>
+            <h2 class="metadata-h2">Datos sobre la dificultad:</h2>
+            <div></div>
+            <h2 class="ml-2vh metadata-h2 ">Nivel de columna:</h2>
+            <p class="metadata-p">{{question.difficultLevelColumn}}</p>
+            <h2 class="ml-2vh metadata-h2 ">Nivel de fila:</h2>
+            <p class="metadata-p">{{question.difficultLevelRow}}</p>
+            <h2 class="metadata-h2 ">Tipo de pregunta:</h2>
+            <p class="metadata-p">{{question.type}}</p>
+        </div>
+    </section>
+</body>

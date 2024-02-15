@@ -1,0 +1,46 @@
+button{
+    @apply bg-blue-800 p-2 rounded-lg;
+}
+
+.input-label {
+    @apply overflow-y-auto  w-full bg-gray-700 rounded-lg p-4 text-xl cursor-pointer text-justify;
+
+    /* &::first-letter {
+        @apply font-extrabold;
+    } */
+}
+
+strong{
+    @apply text-blue-300;
+}
+.active {
+    @apply text-blue-500 font-semibold  input-label border-solid border-green-400;
+    border-width: 0.5vh;
+}
+
+.option {
+    @apply text-gray-300 input-label;
+}
+
+.error-load{
+    @apply underline text-blue-500;
+    &:hover{
+        @apply text-blue-600;
+    }
+
+    &:active{
+        @apply text-blue-400;
+    }
+}
+
+.btn-next{
+    @apply p-4;
+}
+
+.btn-desativate{
+    @apply btn-next bg-opacity-50;
+}
+
+.nextQueston-button {
+    @apply btn-next bg-green-400 text-black;
+}

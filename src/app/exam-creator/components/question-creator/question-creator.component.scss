@@ -1,0 +1,45 @@
+.invalid{
+    @apply border-4 border-red-600;
+}
+
+
+input[type='text'], input[type='number'] {
+    @apply mx-4 p-2 rounded-lg;
+}
+
+/* .entry{
+    @apply mx-4 p-2 rounded-lg;
+} */
+
+select {
+    @apply m-4 p-2 rounded-lg;
+}
+button{
+    @apply bg-blue-400 p-2 m-4 rounded-lg;
+}
+
+.invalid {
+    @apply border-red-500 border-4 border-solid;
+}
+
+.invalid-add{
+    @apply bg-red-500 opacity-50;
+}
+
+
+/* correct answer */
+.option-answer {
+    @apply px-4 py-2 rounded-lg cursor-pointer;
+}
+
+.answer {
+    @apply bg-red-400 text-white option-answer;
+}
+
+.correct-answer {
+    @apply  cursor-pointer bg-green-500 text-black option-answer;
+}
+
+label{
+    @apply text-white;
+}

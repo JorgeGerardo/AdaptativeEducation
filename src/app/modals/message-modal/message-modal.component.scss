@@ -1,0 +1,17 @@
+body{
+    height: 40vh;
+    width: 60vh;
+}
+
+.btn-option {
+    @apply px-4 py-2 rounded-lg text-white;
+}
+
+.btn-acept {
+    @apply bg-green-500 hover:bg-green-600 btn-option active:bg-green-400;
+}
+
+
+.btn-cancel {
+    @apply bg-red-500 hover:bg-red-600 btn-option active:bg-red-400;;
+} 

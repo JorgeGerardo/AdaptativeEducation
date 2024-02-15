@@ -1,1 +1,22 @@
-/* You can add global styles to this file, and also import other style files */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* CDK */
+@import '@angular/cdk/overlay-prebuilt.css';
+
+
+/* Swiper */
+@import 'swiper/scss';
+@import 'swiper/scss/navigation';
+@import 'swiper/scss/pagination';
+
+.btn-set {
+    @apply p-2 m-1 bg-blue-700 rounded-lg;
+    &:hover{
+        @apply opacity-50;
+    }
+    &:active{
+        @apply bg-blue-600;
+    }
+}

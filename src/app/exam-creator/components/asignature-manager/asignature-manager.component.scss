@@ -1,0 +1,20 @@
+.invalidInput {
+  @apply border-4 border-red-600 border-solid;
+}
+
+input {
+  @apply rounded-lg m-2 w-1/4 text-xl p-2;
+}
+
+button {
+  @apply bg-blue-500 ml-2 rounded-lg px-2;
+}
+
+.cdk-header-row {
+  @apply sticky top-0 z-10;
+}
+
+.cdk-row:hover {
+  @apply cursor-pointer;
+  background-color: #cbd5e0;
+}

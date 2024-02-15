@@ -1,0 +1,35 @@
+#logo {
+  scale: 200%;
+}
+
+.active {
+  @apply text-red-400;
+}
+
+.aLink {
+  @apply block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0 md:dark:hover:text-blue-500 dark:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700;
+}
+
+
+.aLinkActive{
+    @apply block py-2 px-3 text-white bg-blue-700 rounded md:bg-transparent md:text-blue-700 md:p-0 md:dark:text-blue-500;
+}
+
+.login{
+    @apply text-white font-medium rounded-lg text-sm px-4 py-2 text-center hover:bg-blue-700 bg-blue-600;
+}
+.close-sesion{
+    @apply text-white font-medium rounded-lg text-sm px-4 py-2 text-center hover:opacity-75 bg-rose-600;
+}
+
+button {
+  @apply cursor-pointer;
+}
+
+ul{
+  @apply flex p-4 font-medium border rounded-lg space-x-8 flex-row mt-0 md:border-0 bg-gray-900 border-gray-700;
+}
+
+a {
+  @apply text-gray-300;
+}

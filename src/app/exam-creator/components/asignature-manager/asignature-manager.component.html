@@ -1,0 +1,57 @@
+<!-- <div class="flex flex-col w-full h-full items-center justify-start bg-gray-800"> -->
+<div class="flex flex-col  w-full h-5/6 items-center justify-start bg-gray-800">
+  <div class="overflow-y-auto w-2/3 h-2/3 mt-10">
+    <table
+      cdk-table
+      [dataSource]="asignatures"
+      class="text-xl w-full text-left text-gray-400 bg-primary-blue rounded-lg cdk-header-row"
+    >
+      <tr
+        class="text-xs uppercase bg-gray-700 text-gray-400 rounded-t-lg"
+        cdk-header-row
+        *cdkHeaderRowDef="cols"
+      ></tr>
+      <tr cdk-row *cdkRowDef="let row; columns: cols"></tr>
+      <tr cdk-footer-row *cdkFooterRowDef="cols"></tr>
+
+      <ng-container cdkColumnDef="name">
+        <th cdk-header-cell *cdkHeaderCellDef class="p-3">name</th>
+        <td cdk-cell *cdkCellDef="let row" class="p-3 align-text-top">
+          {{ row.name }}
+        </td>
+
+        <td class="p-3 align-text-top" cdk-footer-cell *cdkFooterCellDef>
+          Total:
+        </td>
+      </ng-container>
+
+      <ng-container cdkColumnDef="options">
+        <th cdk-header-cell *cdkHeaderCellDef class="p-3">options</th>
+        <div class="flex items-end">
+          <a
+            class="underline hover:text-blue-300 hover:cursor-pointer text-red-400 font-bold"
+            cdk-cell
+            *cdkCellDef="let row"
+            (click)="deleteAsigature(row)"
+            >Eliminar</a
+          >
+        </div>
+
+        <td class="font-extrabold" cdk-footer-cell *cdkFooterCellDef>
+          <!-- {{ asignatures.length }} -->
+        </td>
+      </ng-container>
+    </table>
+  </div>
+
+  <h1 class="mt-10 text-3xl text-white mb-4">Agregar asignaturas</h1>
+  <form class="flex w-full justify-center" [formGroup]="form">
+    <input
+      formControlName="asignatureName"
+      type="text"
+      [class.invalidInput]="asignatureInvalid"
+      placeholder="Ingrese el nombre de la asignatura"
+    />
+    <button #addButton type="button">Agregar</button>
+  </form>
+</div>

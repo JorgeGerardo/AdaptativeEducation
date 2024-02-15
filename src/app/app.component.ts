@@ -1,10 +1,13 @@
 import { Component } from '@angular/core';
-
+import { AuthenticationService } from './services/authentication.service';
 @Component({
   selector: 'app-root',
-  templateUrl: './app.component.html',
-  styleUrls: ['./app.component.scss']
+  template: `
+    <div class="w-screen h-screen">
+      <router-outlet></router-outlet>
+    </div>
+  `,
 })
 export class AppComponent {
-  title = 'EDA-App';
+  constructor(private authentication: AuthenticationService) {}
 }

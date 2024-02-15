@@ -1,0 +1,29 @@
+.btn-login {
+  @apply bg-gray-900 text-white mt-2 p-4 rounded-lg cursor-pointer;
+  &:hover {
+    @apply bg-gray-800;
+  }
+
+  &:active{
+    @apply bg-gray-600;
+  }
+}
+
+.title{
+    @apply text-white text-9xl font-extrabold text-center;
+}
+
+.bg-img{
+    @apply relative w-64 mt-36;
+}
+
+.btn-start{
+    @apply bg-blue-500 p-4 rounded-lg text-white text-3xl mt-4;
+    &:hover{
+        @apply bg-blue-600;
+    }
+
+    &:active{
+        @apply bg-blue-300;
+    }
+}
